@@ -1,12 +1,11 @@
 package dutch.minigame.repositories
 
 import dutch.minigame.models.CardModel
-import dutch.minigame.models.CardSuit
 import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.data.jpa.repository.Query
 
-interface CardRepository:JpaRepository<CardModel, Int>{
+interface CardRepository : JpaRepository<CardModel, Int>{
 
-    fun startGame(): List<CardModel>{
-        return List<CardModel>(CardModel(cardSuit =CardSuit.clubs ,1))
-    }
+    @Query(value = "SELECT * FROM cards", nativeQuery = true)
+    fun startGame(player_one: Int, player_two:Int):List<CardModel>
 }

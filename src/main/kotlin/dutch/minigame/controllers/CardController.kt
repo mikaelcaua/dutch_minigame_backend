@@ -1,17 +1,17 @@
 package dutch.minigame.controllers
 
-import dutch.minigame.models.GameModel
-import dutch.minigame.services.GameService
+import dutch.minigame.models.CardModel
+import dutch.minigame.services.CardService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/games")
-class GameController (val gameService: GameService){
+@RequestMapping("/cards")
+class CardController(val cardService: CardService) {
 
     @GetMapping("")
-    fun teste():List<GameModel>{
-        return gameService.getAllGames()
+    fun teste(): List<CardModel> {
+        return cardService.startGame()
     }
 }
